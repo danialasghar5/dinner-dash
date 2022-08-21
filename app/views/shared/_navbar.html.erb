@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="nav navbar-header">
+    <%= link_to "Dinner Dash", root_path, :class => 'navbar-brand' %>
+  </div>
+  <div class="navbar-collapse collapse w-70"></div>
+
+  <div class="navbar-collapse collapse">
+    <ul class="navbar-nav mx-auto">
+      <% if user_signed_in? %>
+        <li><%= "Hello #{current_user.email} !" %></li>
+        <li class="left-spacing"><%=link_to "Log out", destroy_user_session_path, method: "delete", data: { turbo_method: :delete } %></li>
+      <% else %>
+        <li><%=link_to "Sign Up",  new_user_registration_path %></li>
+        <li class="left-spacing"><%=link_to "Login", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
